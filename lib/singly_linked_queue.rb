@@ -9,27 +9,34 @@ module SinglyLinkedQueue
   class LinkedQueue
     attr_accessor :first, :last
 
-    def initialize(item = nil)
-      @first = @last = Item.new(item)
+    def initialize
+      @first = @last = nil
     end
 
     ##
     # Adds a new item at the end of the queue.
     # @return nil
     def put(item = nil)
-      new_item = Item.new(item)
-      new_item.next = @last
-      @last.before = new_item
-      @last = new_item
+      if @first.nil?
+        @first = @last = Item.new(item)
+      else
+        new_item = Item.new(item)
+        new_item.next = @last
+        @last.before = new_item
+        @last = new_item
+      end
     end
 
     ##
     # Remove the last element of the list and returns its value.
-    # @return (Object)
+    # @return (Object, nil)
     def pop
-      last_item = Marshal.load(Marshal.dump(@first))
-      @first = @first.before
-      last_item.value
+      unless @first.nil?
+        last_item = Marshal.load(Marshal.dump(@first))
+        @first = @first.before
+        return last_item.value
+      end
+      nil
     end
 
     ##
