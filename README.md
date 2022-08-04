@@ -1,8 +1,6 @@
 # SinglyLinkedQueue
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/singly_linked_queue`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A simple linked queue data structure implementation.
 
 ## Installation
 
@@ -16,7 +14,16 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'singly_linked_queue'
+
+queue = SinglyLinkedQueue::LinkedQueue.new
+
+queue.push("Item 1")
+queue.push("Item 2")
+
+puts queue.pop # >> Item 1
+```
 
 ## Development
 
